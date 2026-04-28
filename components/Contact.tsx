@@ -29,7 +29,7 @@ const SOCIALS = [
     icon: '📸',
     label: 'INSTAGRAM',
     value: '@papamonabrow',
-    href: 'https://instagram.com/papamonabrow',
+    href: 'https://instagram.com/papa.monabrow',
     color: '#ffc933',
   },
 ];
