@@ -82,49 +82,139 @@ export default function Hero() {
         </motion.div>
       ))}
 
-      {/* Pixel character — CSS slime blob */}
+      {/* Astronaut avatar */}
       <motion.div
         className="mb-8 relative"
-        animate={{ y: [0, -12, 0] }}
-        transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+        animate={{ y: [0, -14, 0], rotate: [-1, 1, -1] }}
+        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
       >
-        <div className="relative w-24 h-20 mx-auto">
-          {/* Body */}
-          <div
-            className="absolute inset-0 rounded-t-full"
-            style={{
-              background: 'linear-gradient(180deg, #f4900c 0%, #d4700a 100%)',
-              border: '3px solid #7c3a04',
-              boxShadow: '3px 3px 0 #7c3a04, inset 0 -4px 0 rgba(0,0,0,0.2)',
-            }}
+        <svg
+          width="160"
+          height="180"
+          viewBox="0 0 160 180"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <radialGradient id="helmetGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#f4900c" stopOpacity="0.25" />
+              <stop offset="100%" stopColor="#f4900c" stopOpacity="0" />
+            </radialGradient>
+            <radialGradient id="visorGrad" cx="35%" cy="35%" r="65%">
+              <stop offset="0%" stopColor="#ffc933" stopOpacity="0.5" />
+              <stop offset="100%" stopColor="#c05000" stopOpacity="0" />
+            </radialGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          {/* Ambient helmet glow */}
+          <circle cx="80" cy="64" r="52" fill="url(#helmetGlow)" />
+
+          {/* Helmet shell */}
+          <circle cx="80" cy="64" r="42" fill="#fef3dc" stroke="#d4c4a0" strokeWidth="2" />
+
+          {/* Visor */}
+          <ellipse cx="80" cy="68" rx="27" ry="23" fill="#1a0a00" />
+          <ellipse cx="80" cy="68" rx="27" ry="23" fill="url(#visorGrad)" />
+
+          {/* Visor shine */}
+          <ellipse
+            cx="67"
+            cy="57"
+            rx="9"
+            ry="5"
+            fill="white"
+            opacity="0.35"
+            transform="rotate(-25 67 57)"
           />
-          {/* Eyes */}
-          <div className="absolute top-5 left-5 w-3 h-3 bg-[#0a0602] rounded-sm" />
-          <div className="absolute top-5 right-5 w-3 h-3 bg-[#0a0602] rounded-sm" />
-          {/* Eye shine */}
-          <div className="absolute top-4 left-6 w-1 h-1 bg-white rounded-full" />
-          <div className="absolute top-4 right-6 w-1 h-1 bg-white rounded-full" />
-          {/* Smile */}
-          <div
-            className="absolute"
-            style={{
-              bottom: '22px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              width: '20px',
-              height: '8px',
-              borderBottom: '2px solid #0a0602',
-              borderLeft: '2px solid #0a0602',
-              borderRight: '2px solid #0a0602',
-              borderRadius: '0 0 8px 8px',
-            }}
+          <ellipse cx="90" cy="73" rx="4" ry="3" fill="white" opacity="0.15" />
+
+          {/* Visor frame */}
+          <ellipse
+            cx="80"
+            cy="68"
+            rx="27"
+            ry="23"
+            fill="none"
+            stroke="#f4900c"
+            strokeWidth="2.5"
           />
-          {/* Shadow */}
-          <div
-            className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-3 rounded-full"
-            style={{ background: 'rgba(0,0,0,0.4)', filter: 'blur(4px)' }}
+
+          {/* Collar ring */}
+          <rect x="52" y="99" width="56" height="13" rx="6.5" fill="#d4c4a0" />
+          <rect x="55" y="102" width="50" height="7" rx="3.5" fill="#fef3dc" />
+
+          {/* Body suit */}
+          <rect x="45" y="108" width="70" height="52" rx="18" fill="#fef3dc" stroke="#d4c4a0" strokeWidth="1.5" />
+
+          {/* Left arm */}
+          <rect
+            x="20"
+            y="112"
+            width="27"
+            height="22"
+            rx="11"
+            fill="#fef3dc"
+            stroke="#d4c4a0"
+            strokeWidth="1.5"
           />
-        </div>
+          {/* Left glove */}
+          <circle cx="24" cy="136" r="9" fill="#f4900c" stroke="#7c3a04" strokeWidth="1.5" />
+
+          {/* Right arm */}
+          <rect
+            x="113"
+            y="112"
+            width="27"
+            height="22"
+            rx="11"
+            fill="#fef3dc"
+            stroke="#d4c4a0"
+            strokeWidth="1.5"
+          />
+          {/* Right glove */}
+          <circle cx="136" cy="136" r="9" fill="#f4900c" stroke="#7c3a04" strokeWidth="1.5" />
+
+          {/* Chest control panel */}
+          <rect x="56" y="118" width="48" height="30" rx="7" fill="#f4900c" stroke="#7c3a04" strokeWidth="1.5" />
+
+          {/* Panel buttons */}
+          <circle cx="68" cy="128" r="4.5" fill="#ffc933" filter="url(#glow)" />
+          <circle cx="80" cy="128" r="4.5" fill="#4ade80" filter="url(#glow)" />
+          <circle cx="92" cy="128" r="4.5" fill="#f87171" filter="url(#glow)" />
+
+          {/* Panel mini-screen */}
+          <rect x="60" y="137" width="40" height="7" rx="2" fill="#0a0602" />
+          {/* Blinking green bar */}
+          <rect x="62" y="138.5" width="20" height="4" rx="1" fill="#4ade80" opacity="0.85">
+            <animate attributeName="width" values="20;28;20" dur="2s" repeatCount="indefinite" />
+          </rect>
+
+          {/* Boots */}
+          <rect x="53" y="153" width="24" height="26" rx="9" fill="#fef3dc" stroke="#d4c4a0" strokeWidth="1.5" />
+          <rect x="83" y="153" width="24" height="26" rx="9" fill="#fef3dc" stroke="#d4c4a0" strokeWidth="1.5" />
+          <rect x="50" y="169" width="30" height="10" rx="5" fill="#f4900c" stroke="#7c3a04" strokeWidth="1.5" />
+          <rect x="80" y="169" width="30" height="10" rx="5" fill="#f4900c" stroke="#7c3a04" strokeWidth="1.5" />
+        </svg>
+
+        {/* Floating shadow */}
+        <motion.div
+          className="mx-auto rounded-full"
+          style={{
+            width: 80,
+            height: 12,
+            background: 'rgba(0,0,0,0.35)',
+            filter: 'blur(6px)',
+            marginTop: -8,
+          }}
+          animate={{ scaleX: [1, 0.75, 1], opacity: [0.35, 0.2, 0.35] }}
+          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+        />
       </motion.div>
 
       {/* Name */}
